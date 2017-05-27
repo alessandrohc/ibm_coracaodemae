@@ -37,6 +37,9 @@
 	}
 	nav form {max-width: 316px }
 }
+.label{
+	color: red;
+}
 /*reset*/
 nav form, nav form .form-group {margin-bottom: 0px}
 nav#top {padding: 8px 8px}

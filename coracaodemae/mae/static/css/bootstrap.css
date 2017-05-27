@@ -2957,7 +2957,7 @@ fieldset[disabled] a.btn {
 
 .btn-outline-success:hover {
   color: #fff;
-  background-color: #5cb85c;
+  background-color: #C71585;
   border-color: #5cb85c;
 }
 
@@ -7557,6 +7557,9 @@ a.bg-inverse:focus, a.bg-inverse:hover {
 .my-2 {
   margin-top: 0.5rem !important;
   margin-bottom: 0.5rem !important;
+  background-color: #9932CC;
+  color: #fff;
+  border-color: #9932CC;
 }
 
 .m-3 {
