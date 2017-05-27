@@ -24,15 +24,15 @@ class Filho(models.Model):
         max_length=250, verbose_name='Alergias', blank=True)
     doencas = models.TextField(verbose_name='Doenças', blank=True)
     escola = models.CharField(max_length=50, verbose_name="Escola", blank=True)
-    cep_escola = models.IntegerField(verbose_name="Cep Escola", null=True)
+    cep_escola = models.IntegerField(verbose_name="Cep Escola", blank=True, null=True)
     natacao = models.BooleanField(verbose_name='Faz natação')
-    cep_natacao = models.IntegerField(verbose_name='Cep Natação', null=True)
+    cep_natacao = models.IntegerField(verbose_name='Cep Natação', blank=True, null=True)
     judo = models.BooleanField(verbose_name='Faz judo')
-    cep_judo = models.IntegerField(verbose_name='Cep judo', null=True)
+    cep_judo = models.IntegerField(verbose_name='Cep judo', blank=True, null=True)
     bale = models.BooleanField(verbose_name='Faz bale')
-    cep_bale = models.IntegerField(verbose_name='Cep bale', null=True)
+    cep_bale = models.IntegerField(verbose_name='Cep bale', blank=True, null=True)
     ingles = models.BooleanField(verbose_name='Faz ingles')
-    cep_ingles = models.IntegerField(verbose_name='Cep ingles', null=True)
+    cep_ingles = models.IntegerField(verbose_name='Cep ingles', blank=True, null=True)
 
     def __str__(self):
         return self.nome
