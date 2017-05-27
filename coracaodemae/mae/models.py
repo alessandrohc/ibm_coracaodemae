@@ -112,3 +112,43 @@ class Filho(models.Model):
 
     def __str__(self):
         return self.nome
+
+
+class ComentarioMae(models.Model):
+    created_at = models.DateTimeField("Criado em", auto_now=True)
+    mae = models.ForeignKey(Mae)
+    comentario = models.TextField(verbose_name='Comentario')
+
+    def __str__(self):
+        return "Comentario da %s" % str(self.mae)
+
+
+class AvaliacaoMae(models.Model):
+    created_at = models.DateTimeField("Criado em", auto_now=True)
+    mae = models.ForeignKey(Mae)
+    avaliacao = models.IntegerField(verbose_name='Avaliacao', blank=True, null=True)
+
+    def __str__(self):
+        return "Avaliação da %s" % str(self.mae)
+
+
+class ApoioMae(models.Model):
+    created_at = models.DateTimeField("Criado em", auto_now=True)
+    mae_origem = models.ForeignKey(Mae, related_name="mae_origem")
+    mae_destino = models.ForeignKey(Mae, related_name="mae_destino")
+    data_inicio = models.DateTimeField("Data inicio")
+    data_fim = models.DateTimeField("Data final")
+    foi_processado = models.BooleanField(verbose_name='Foi processado?')
+    qtd_horas = models.IntegerField(verbose_name='Quantidade de horas', blank=True, null=True)
+    valor_hora = models.IntegerField(verbose_name='Valor hora', blank=True, null=True)
+
+    def __str__(self):
+        return "Apoio da %s para a %s" % (str(self.mae_destino), str(self.mae_origem))
+
+
+class ApoioMaeFilhos(models.Model):
+    apoio_mae = models.ForeignKey(ApoioMae)
+    filho = models.ForeignKey(Filho)
+
+    def __str__(self):
+        return "%s Filho %s" % (str(self.apoio_mae), str(self.filho))
