@@ -24,9 +24,10 @@ class Mae(FacebookProfileModel):
         unique=True,
     )
     nome = models.CharField(max_length=250, verbose_name='Nome completo')
-    foto_mae = models.ImageField(
-        upload_to='uploads', verbose_name="Foto da Mãe")
-    #fotos_casa = models.ForeignKey(Imagens)
+    foto_mae_gd = models.ImageField(
+        upload_to='uploads', verbose_name="Foto da Mãe grande")
+    foto_mae_pq = models.ImageField(
+        upload_to='uploads', verbose_name="Foto da Mãe Pequena")
     data_nascimento = models.DateField(verbose_name='Data de Nascimento')
     endereco = models.CharField(max_length=100, verbose_name='Endereço')
     bairro = models.CharField(max_length=100, verbose_name='Bairro')
