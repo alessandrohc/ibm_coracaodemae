@@ -41,6 +41,11 @@
 nav form, nav form .form-group {margin-bottom: 0px}
 nav#top {padding: 8px 8px}
 
+.icon {
+	background-color: #000000;
+	color: #fff;
+}
+
 /*icons*/
 footer .nav-link {
     display: block;
