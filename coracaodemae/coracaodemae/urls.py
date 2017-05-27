@@ -27,6 +27,4 @@ urlpatterns = [
     url(r'^pagamento/([0-9]+)/$', views.pagamento),
     url(r'^confirmacao/([0-9]+)/$', views.confirmacao),
     url(r'^avaliacao/([0-9]+)/$', views.avaliacao),
-    url(r'^facebook/', include('django_facebook.urls')),
-    url(r'^accounts/', include('django_facebook.auth_urls'))
 ]

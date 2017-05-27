@@ -7,3 +7,6 @@ six==1.10.0
 Pillow
 django-registration
 https://codeload.github.com/tschellenbach/Django-facebook/zip/master
+watson_developer_cloud
+facepy
+
