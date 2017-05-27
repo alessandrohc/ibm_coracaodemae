@@ -1,16 +1,16 @@
 from django.db import models
-from django_facebook.models import FacebookProfileModel
 from django.conf import settings
 
 
 class Imagens(models.Model):
     image = models.ImageField(upload_to="uploads")
     mae = models.ForeignKey('Mae')
+
     def __str__(self):
         return self.image.name
 
 
-class Mae(FacebookProfileModel):
+class Mae(models.Model):
     animais_choices = (
         ('C', 'Cachorro'),
         ('G', 'Gato'),
@@ -24,6 +24,8 @@ class Mae(FacebookProfileModel):
         unique=True,
     )
     nome = models.CharField(max_length=250, verbose_name='Nome completo')
+    facebook_id = models.IntegerField(verbose_name='Facebook ID')
+
     foto_mae_gd = models.ImageField(
         upload_to='uploads', verbose_name="Foto da Mãe grande")
     foto_mae_pq = models.ImageField(
@@ -57,7 +59,6 @@ class Mae(FacebookProfileModel):
 
     def __str__(self):
         return self.user.username
-
 
 
 class Filho(models.Model):
