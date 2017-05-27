@@ -1,4 +1,6 @@
-#page {padding:60px 8px 35px 8px}
+#page {padding:60px 8px 35px 8px;
+		background-color: #FFF0F5;
+}
 /*tether*/
 @media (min-width: 320px){
 	.card-columns {
