@@ -6,6 +6,11 @@ from django_facebook.utils import get_user_model, get_profile_model
 from django.conf import settings
 
 # Create your models here.
+class Imagens(models.Model):
+    image = models.ImageField(upload_to="uploads")
+
+    def __str__(self):
+        return self.image.name
 
 
 class Mae(FacebookModel):
@@ -45,7 +50,7 @@ class Filho(models.Model):
     cep_bale = models.IntegerField(max_length=8, verbose_name='Cep bale')
     ingles = models.BooleanField(verbose_name='Faz ingles')
     cep_ingles = models.IntegerField(max_length=8, verbose_name='Cep ingles')
-            
+
 
     def __str__(self):
         return self.nome
