@@ -126,6 +126,7 @@ audio:not([controls]) {
 
 img {
   border-style: none;
+
 }
 
 svg:not(:root) {
@@ -4411,7 +4412,8 @@ tbody.collapse.show {
           flex-direction: column;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
+  border-radius: 50rem;
+  color: #7B68EE;
 }
 
 .card-block {
@@ -4424,6 +4426,7 @@ tbody.collapse.show {
 
 .card-title {
   margin-bottom: 0.75rem;
+
 }
 
 .card-subtitle {
@@ -4568,6 +4571,7 @@ tbody.collapse.show {
 
 .card-inverse {
   color: rgba(255, 255, 255, 0.65);
+
 }
 
 .card-inverse .card-header,
@@ -4580,14 +4584,16 @@ tbody.collapse.show {
 .card-inverse .card-footer,
 .card-inverse .card-title,
 .card-inverse .card-blockquote {
-  color: #fff;
+  color: #BA55D3;
+  font-family:"comic sans", comic sans ms, cursive ;
 }
 
 .card-inverse .card-link,
 .card-inverse .card-text,
 .card-inverse .card-subtitle,
 .card-inverse .card-blockquote .blockquote-footer {
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 0, 0, 0.9);
+
 }
 
 .card-inverse .card-link:focus, .card-inverse .card-link:hover {
@@ -4602,6 +4608,7 @@ tbody.collapse.show {
 
 .card-img {
   border-radius: calc(0.25rem - 1px);
+
 }
 
 .card-img-overlay {
@@ -6081,7 +6088,7 @@ button.close {
 }
 
 .bg-primary {
-  background-color: #0275d8 !important;
+  background-color: #8A2BE2 !important;
 }
 
 a.bg-primary:focus, a.bg-primary:hover {
@@ -6200,6 +6207,7 @@ a.bg-inverse:focus, a.bg-inverse:hover {
 
 .d-block {
   display: block !important;
+  border-radius: 8px;
 }
 
 .d-table {
