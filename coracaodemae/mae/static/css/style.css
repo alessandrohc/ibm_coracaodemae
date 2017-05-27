@@ -1,5 +1,4 @@
 #page {padding:60px 8px 35px 8px}
-.detail {margin-top: 0px !important;}
 /*tether*/
 @media (min-width: 320px){
 	.card-columns {
@@ -70,7 +69,32 @@ footer .nav-item span {
 /*detail.htm*/
 
 #children {
-	position: absolute;
-    right: 24px;
-    top: 60px
+    position: absolute;
+    right: 18px;
+    top: 98px;
+}
+.detail {padding: 0px 0px !important;}
+.carousel-indicators li {
+	height: 15px !important;
+	max-width: 15px;
+	border-radius:10px !important
+	-moz-border-radius:10px !important;
+	-webkit-border-radius:10px !important
+}
+
+/*avaliacao*/
+.rating {
+	position: absolute !important;
+	bottom: 10px !important;
+	right: 10px !important;
+}
+.detail .rating {
+	position: relative !important;
+	bottom: initial !important;
+	right: initial !important;
+}
+.detail .rate-base-layer span { color: #000 !important}
+.rating span {
+	font-size: 1.5rem; 
+	color: #ffcb05
 }
