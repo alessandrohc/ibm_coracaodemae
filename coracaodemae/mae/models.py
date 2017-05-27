@@ -39,7 +39,6 @@ class Filho(models.Model):
 
 class Mae(FacebookProfileModel):
     user = models.OneToOneField(settings.AUTH_USER_MODEL)
-    teste = models.IntegerField()
     filhos = models.ManyToManyField(Filho)
 
 
