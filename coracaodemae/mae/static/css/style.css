@@ -94,7 +94,7 @@ footer .nav-item span {
 /*avaliacao*/
 .rating {
 	position: absolute !important;
-	top: 50px !important;
+	bottom: 10px !important;
 	right: 10px !important;
 }
 .detail .rating {
