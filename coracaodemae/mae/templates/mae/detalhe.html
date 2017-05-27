@@ -1,0 +1,90 @@
+{% load static %}
+{% include "mae/_head.html" %}
+<body>
+	<div class="container detail" id="page">
+		<div id="carouselExampleIndicators" class="carousel slide">
+			  <ol class="carousel-indicators">
+			    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+			    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+			    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+			  </ol>
+			<div class="carousel-inner" role="listbox">
+				<div class="carousel-item active">
+				<img class="d-block img-fluid" src="{% static "/media/mae1.jpg" %}" alt="First slide">
+				</div>
+				<div class="carousel-item">
+				<img class="d-block img-fluid" src="{% static "/media/mae2.jpg" %}" alt="Second slide">
+				</div>
+				<div class="carousel-item">
+				<img class="d-block img-fluid" src="{% static "/media/mae3.jpg" %}" alt="Third slide">
+				</div>
+			</div>
+		</div>
+	  <div class="card-group">
+	  	<div class="card">
+	  		<div class="card-block">
+	  			<h4 class="card-title">Yasmim </h4>
+	  			<i class="fa fa-child" id="children" aria-hidden="true"> 3 filhos</i>
+	  			<p class="card-text">35 anos </p>
+	  			<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+	  		</div>
+	  		<ul class="list-group list-group-flush">
+	  			<li class="list-group-item"><a href="#"><i class="fa fa-map-marker" aria-hidden="true"> Avenida Epit&aacute;fio pessoa, 15, Ipanema, Rio de Janeiro</i></a> </li>
+	  			<li class="list-group-item"><strong>Valor: </strong>&nbsp;R$ 30,00 por hora</i></li>
+	  			<li class="list-group-item">
+	  				<p>
+	  					<strong>Outras informa&ccedil;&otilde;es</strong><br>
+	  					Some quick example text to build on the cardexample text to build on the example text to build on the
+	  					example text to build on the
+	  				</p>
+	  			</li>
+	  			<li class="list-group-item"><strong>Comentários</strong></li>
+	  			<li class="list-group-item">
+	  				&Oacute;tima pessoa, super recomendo!
+	  				<small>Lorhana Trindade em 23 de maio às 14:30</small>
+	  			</li>
+	  			<li class="list-group-item">
+	  				Uma verdadeira m&atilde;e, atenciosa e dedicada!
+	  				<small>Anne benevenuta em 22 de maio às 12:15</small>
+	  			</li>
+	  		</ul>
+	  		<div class="card-block">
+	  			<a href="#" class="card-link">Link</a>
+	  			<a href="#" class="card-link">Link</a>
+	  		</div>
+	  	</div>
+	  </div>
+
+	<footer>
+			<nav class="navbar navbar-toggleable-md navbar-inverse fixed-bottom bg-primary" role="navigation">
+				<div class="container">
+					<ul class="nav">
+						<li class="nav-item">
+							<a class="nav-link text-white active" href="#"><i class="fa fa-undo" aria-hidden="true"></i></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-white active" href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-white" href="#"><i class="fa fa-comment" aria-hidden="true"></i></a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+	</footer>
+</body>
+<script type="text/javascript">
+	$("#carouselExampleIndicators").swipe({
+
+  swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
+
+    if (direction == 'left') $(this).carousel('next');
+    if (direction == 'right') $(this).carousel('prev');
+
+  },
+  allowPageScroll:"vertical"
+
+});
+
+</script>
+</html>
