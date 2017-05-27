@@ -1,4 +1,5 @@
 pyenv
+venv
 *.pyc
 coracaodemae/mae/migrations/
 coracaodemae/db.sqlite3
