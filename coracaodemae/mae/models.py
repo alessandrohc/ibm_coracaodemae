@@ -25,7 +25,8 @@ class Mae(models.Model):
     )
     nome = models.CharField(max_length=250, verbose_name='Nome completo')
     facebook_id = models.IntegerField(verbose_name='Facebook ID')
-
+    ibm_verificado_mulher = models.BooleanField(
+        verbose_name='API da IBM verificou se eh mulher.')
     foto_mae_gd = models.ImageField(
         upload_to='uploads', verbose_name="Foto da Mãe grande")
     foto_mae_pq = models.ImageField(
@@ -59,6 +60,22 @@ class Mae(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+class Friends(models.Model):
+    mae = models.ForeignKey(Mae)
+    nome = models.CharField(max_length=250, verbose_name='Nome')
+
+    def __str__(self):
+        return self.nome
+
+
+class Posts(models.Model):
+    mae = models.ForeignKey(Mae)
+    post = models.TextField(verbose_name='post')
+
+    def __str__(self):
+        return self.nome
 
 
 class Filho(models.Model):
