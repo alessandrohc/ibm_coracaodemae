@@ -1,0 +1,21 @@
+.custom-bg-primary { background-color: #0087b4 !important } 
+.custom-primary-link {
+	color: #999;
+}
+.custom-active {
+	color: #0087b4/*#8A2BE2*/;
+}
+.custom-line {
+	border-top : 1px solid #ccc;
+}
+.custom-bg-white { background-color: #fff; }
+.custom-card-tile {color: #fefefe !important; font-size: 20px !important;
+	position: absolute;
+    bottom: 32px;
+}
+p.itens { font-size: 13px !important; color: rgba(255,255,255,0.80) !important}
+/*box-shadow: 10px 10px 5px grey;*/
+
+.card-img-overlay {
+	padding: 0.5rem !important;
+}
