@@ -1,6 +1,8 @@
 from django.db import models
 from django.conf import settings
 import json
+import geocoder
+from geopy.distance import vincenty
 
 
 class Imagens(models.Model):
@@ -109,6 +111,16 @@ class Mae(models.Model):
                     amigas_iguas.append(amiga_destino.nome)
 
         return amigas_iguas
+
+    def get_km_entre_maes(self, mae_destino):
+
+        g = geocoder.google(self.cep)
+        g_destino = geocoder.google(mae_destino.cep)
+
+        ponto = (g.lat, g.lng)
+
+        return round(vincenty(ponto, (g_destino.lat,
+                                g_destino.lng)).kilometers)
 
 
 class Friends(models.Model):
