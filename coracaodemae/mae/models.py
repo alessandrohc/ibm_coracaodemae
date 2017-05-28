@@ -73,7 +73,7 @@ class Mae(models.Model):
 
     def get_order_watson(self, mae):
         t = json.loads(self.ibm_personalidade)
-        return t[str(mae.pk)]
+        return len(self.get_amigas_em_comum(mae)) + t[str(mae.pk)]
 
     def get_itens_em_comum(self, mae_destino):
         mae_origem = self
