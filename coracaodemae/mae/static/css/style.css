@@ -1,8 +1,15 @@
-#page {padding:60px 8px 35px 8px;
-		background-color: #eee9e9;
+body {background-color: #eee9e9;}
+#page { 
+	padding:60px 8px 35px 8px;
 }
-#page .card-img { opacity: 0.9 }
-#page .card-text {font-size: 14px; color: #fefefe; margin-bottom: -3px !important; }
+#page .card-img { 
+	opacity: 0.9 
+}
+#page .card-text {
+	font-size: 14px; 
+	color: #fefefe; 
+	margin-bottom: -3px !important;
+}
 
 /*tether*/
 @media (min-width: 320px){
@@ -57,9 +64,15 @@ footer .nav-link {
     
 }
 
+/*index menu*/
 footer .nav-link i.fa-home { font-size: 40px; margin-top: -8px; margin-right:1.4em;}
 footer .nav-link i.fa-bell { font-size: 34px; margin-top: -4px; margin-right:1.4em;}
 footer .nav-link i.fa-comments { font-size: 40px; margin-top: -10px; }
+
+/*details*/
+footer .nav-link i.fa-heart { font-size: 40px; margin-top: -8px; margin-right:1.4em;}
+footer .nav-link i.fa-undo { font-size: 40px; margin-top: -8px; margin-right:1.4em;}
+footer .nav-link i.fa-comment { font-size: 40px; margin-top: -10px; }
 
 /*icon notify*/
 footer .nav-item span {
