@@ -2,6 +2,8 @@ from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
 from django.contrib import admin
 from mae import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -14,4 +16,4 @@ urlpatterns = [
     # url(r'^cadastro_mae/$', views.cadastro_mae),
     # url(r'^lista/$', views.lista),
     url(r'^avaliacao/(?P<mae_id>[0-9]+)/$', views.avaliacao),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
