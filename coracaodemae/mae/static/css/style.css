@@ -1,6 +1,16 @@
-#page {padding:60px 8px 35px 8px;
-		background-color: #FFF0F5;
+body {background-color: #eee9e9;}
+#page { 
+	padding:60px 8px 35px 8px;
 }
+#page .card-img { 
+	opacity: 0.9 
+}
+#page .card-text {
+	font-size: 14px; 
+	color: #fefefe; 
+	margin-bottom: -3px !important;
+}
+
 /*tether*/
 @media (min-width: 320px){
 	.card-columns {
@@ -45,19 +55,28 @@ nav form, nav form .form-group {margin-bottom: 0px}
 nav#top {padding: 8px 8px}
 
 .icon {
-	color: #fff;
+	/*color: #fff;*/
 }
 
 /*icons*/
 footer .nav-link {
     display: block;
-    padding: .2em 1em;
-    font-size: 1.6rem
+    
 }
+
+/*index menu*/
+footer .nav-link i.fa-home { font-size: 40px; margin-top: -8px; margin-right:1.4em;}
+footer .nav-link i.fa-bell { font-size: 34px; margin-top: -4px; margin-right:1.4em;}
+footer .nav-link i.fa-comments { font-size: 40px; margin-top: -10px; }
+
+/*details*/
+footer .nav-link i.fa-heart { font-size: 40px; margin-top: -8px; margin-right:1.4em;}
+footer .nav-link i.fa-undo { font-size: 40px; margin-top: -8px; margin-right:1.4em;}
+footer .nav-link i.fa-comment { font-size: 40px; margin-top: -10px; }
+
 /*icon notify*/
 footer .nav-item span {
     font-size: 11px;
-    font-family: Arial, sans-serif;
     letter-spacing: -0.2px;
     color: #fff;
     padding: 0 4px 0 4px;
@@ -68,9 +87,20 @@ footer .nav-item span {
     background: #f20f07;
     border-radius: 24px;
     position: absolute;
-    top: -3px;
-    margin-left: 45px;
+    top: 0px;
 }
+
+footer .nav-item span.nbell { margin-left: 22px; }
+footer .nav-item span.ncomments { margin-left: 28px; }
+
+footer .nav-item span.custom-mlabel {
+	background: transparent;
+	top: initial;
+	bottom:10px;
+	margin-left: 0px;
+}
+footer .navbar {height: 65px}
+
 /*form index.html*/
 .form-group, .form-check { margin-top: 10px; }
 .form-check label { margin-right: 10px; margin-left: 5px}
@@ -94,8 +124,7 @@ footer .nav-item span {
 /*avaliacao*/
 .rating {
 	position: absolute !important;
-	top: 50px !important;
-	right: 10px !important;
+	bottom: 10px !important;
 }
 .detail .rating {
 	position: relative !important;

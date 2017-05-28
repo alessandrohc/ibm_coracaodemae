@@ -1,7 +1,7 @@
 {% load static %}
 {% include "mae/_head.html" %}
 <body>
-	<div class="container detail" id="page">
+	<div class="container detail">
 		<div id="carouselExampleIndicators" class="carousel slide">
 			<ol class="carousel-indicators">
 				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -9,40 +9,54 @@
 				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 			</ol>
 			<div class="carousel-inner" role="listbox">
+				
 				<div class="carousel-item active">
-					<img class="d-block img-fluid" src="{% static "/media/mae1.jpg" %}" alt="First slide">
+					<img class="d-block img-fluid" src="{{mae.obj.foto_mae_gd.url}}" alt="First slide">
 				</div>
+				{% for casa in mae.obj.imagens %}
+				
 				<div class="carousel-item">
-					<img class="d-block img-fluid" src="{% static "/media/mae3.jpg" %}" alt="Third slide">
+					<img class="d-block img-fluid" src="{{casa.obj.imagem.url}}" alt="Third slide">
 				</div>
+				{% endfor %}
 			</div>
 		</div>
 	  <div class="card-group">
 	  	<div class="card">
 	  		<div class="card-block">
-	  			<h4 class="card-title">Yasmim Lamartine Beaumont</h4>
+	  			<h4 class="card-title">{{mae.obj.nome}}</h4>
 	  			<div>
-	  				<div class="rating" data-rate-value=6></div>
-	  				<i class="fa fa-child" id="children" aria-hidden="true"> 3 filhos</i>
+	  				<div class="rating" data-rate-value='{{mae.avaliacao}}'></div>
 	  			</div>
-	  			<p class="card-text">35 anos </p>
-	  			<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+	  			<p class="card-text">'{{mae.obj.descricao}}'</p>
 	  		</div>
 	  		<ul class="list-group list-group-flush">
-	  			<li class="list-group-item"><a href="#"><i class="fa fa-map-marker" aria-hidden="true"> Avenida Epit&aacute;fio pessoa, 15, Ipanema, Rio de Janeiro</i></a> </li>
-	  			<li class="list-group-item"><strong>Valor: </strong>&nbsp;R$ 30,00 por hora</i></li>
+	  			<li class="list-group-item"><a href="#"><i class="fa fa-map-marker" aria-hidden="true"> 3 km</i></a>
+	  			</li>
+	  			<li class="list-group-item"><strong>Hospedagem: </strong>&nbsp;R$ {{mae.obj.valor_hora}}</i></li>
 	  			<li class="list-group-item">
-	  				<p>
-	  					<strong>Outras informa&ccedil;&otilde;es</strong><br>
-	  					Some quick example text to build on the cardexample text to build on the example text to build on the
-	  					example text to build on the
-	  				</p>
+	  				<strong>3 itens compativeis</strong><br>
+	  				
+	  			</li>
+	  			<li class="list-group-item">	  				
+	  				<a href="#">Dalva hecht, Maria Carvalho e mais 5 amigos em comum</a>
+	  			</li>
+	  			<li class="list-group-item">	  				
+  					<strong>Outras informa&ccedil;&otilde;es</strong>
+  					Some quick example text to build on the cardexample text to build on the example text to build on the
+  					example text to build on the	  				
 	  			</li>
 	  			<li class="list-group-item"><strong>Comentários</strong></li>
+
+	   		{% for comentario in comentarios %}
+	  			
 	  			<li class="list-group-item">
-	  				&Oacute;tima pessoa, super recomendo!
-	  				<small>Lorhana Trindade em 23 de maio às 14:30</small>
+       			{{ comentario.comentario }}
+       			NOME: {{ comentario.mae_origem.nome }}
+       			DATA: {{ comentario.created_at|date:"d/m/Y"}}
 	  			</li>
+
+	        {% endfor %}  			
 	  			<li class="list-group-item">
 	  				Uma verdadeira m&atilde;e, atenciosa e dedicada!
 	  				<small>Anne benevenuta em 22 de maio às 12:15</small>
@@ -54,23 +68,23 @@
 	  		</div>
 	  	</div>
 	  </div>
-
 	<footer>
-			<nav class="navbar navbar-toggleable-md navbar-inverse fixed-bottom bg-primary" role="navigation">
-				<div class="container">
-					<ul class="nav">
-						<li class="nav-item">
-							<a class="nav-link text-white active" href="#"><i class="fa fa-undo" aria-hidden="true"></i></a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-white active" href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-white" href="#"><i class="fa fa-comment" aria-hidden="true"></i></a>
-						</li>
-					</ul>
-				</div>
-			</nav>
+		<nav class="navbar navbar-toggleable-md navbar-inverse fixed-bottom custom-line custom-bg-white" role="navigation">
+			<div class="container">
+				<ul class="nav">
+					<li class="nav-item">
+						<a class="nav-link custom-active custom-primary-link" href="#"><i class="fa fa-undo" aria-hidden="true"></i></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link custom-primary-link" href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link custom-primary-link" href="#"><i class="fa fa-comment" aria-hidden="true"></i>
+						<span class="ncomments">1</span></a>
+					</li>
+				</ul>
+			</div>
+		</nav>
 	</footer>
 </body>
 <script type="text/javascript">

@@ -26,7 +26,8 @@ class Mae(models.Model):
     nome = models.CharField(max_length=250, verbose_name='Nome completo')
     facebook_id = models.IntegerField(verbose_name='Facebook ID')
     ibm_verificado_mulher = models.BooleanField(
-        verbose_name='API da IBM verificou se eh mulher.')
+        verbose_name='API da IBM verificou se é mulher.')
+    ibm_personalidade = models.TextField(verbose_name='IBM Personalidade', default='', blank=True)
     foto_mae_gd = models.ImageField(
         upload_to='uploads', verbose_name="Foto da Mãe grande")
     foto_mae_pq = models.ImageField(
@@ -61,6 +62,17 @@ class Mae(models.Model):
     def __str__(self):
         return self.user.username
 
+    def get_all_posts(self):
+        _text = ''
+        for t in self.posts_set.all():
+            _text += t.post
+            _text += "\n"
+
+        return _text.encode('utf-8', errors="replace")
+
+    def get_order_watson(self, mae):
+        return 1
+
 
 class Friends(models.Model):
     mae = models.ForeignKey(Mae)
@@ -75,7 +87,7 @@ class Posts(models.Model):
     post = models.TextField(verbose_name='post')
 
     def __str__(self):
-        return self.nome
+        return self.post
 
 
 class Filho(models.Model):
@@ -112,3 +124,45 @@ class Filho(models.Model):
 
     def __str__(self):
         return self.nome
+
+
+class ComentarioMae(models.Model):
+    created_at = models.DateTimeField("Criado em", auto_now=True)
+    comentario = models.TextField(verbose_name='Comentario')
+    mae_origem = models.ForeignKey(Mae, related_name="mae_origem_comentario")
+    mae_destino = models.ForeignKey(Mae, related_name="mae_destino_comentario")
+
+    def __str__(self):
+        return "Comentario para %s" % str(self.mae_destino)
+
+
+class AvaliacaoMae(models.Model):
+    created_at = models.DateTimeField("Criado em", auto_now=True)
+    mae_origem = models.ForeignKey(Mae, related_name="mae_origem_avaliacao")
+    mae_destino = models.ForeignKey(Mae, related_name="mae_destino_avaliacao")
+    avaliacao = models.IntegerField(verbose_name='Avaliacao', blank=True, null=True)
+
+    def __str__(self):
+        return "Avaliação para %s" % str(self.mae_destino)
+
+
+class ApoioMae(models.Model):
+    created_at = models.DateTimeField("Criado em", auto_now=True)
+    mae_origem = models.ForeignKey(Mae, related_name="mae_origem")
+    mae_destino = models.ForeignKey(Mae, related_name="mae_destino")
+    data_inicio = models.DateTimeField("Data inicio")
+    data_fim = models.DateTimeField("Data final")
+    foi_processado = models.BooleanField(verbose_name='Foi processado?')
+    qtd_horas = models.IntegerField(verbose_name='Quantidade de horas', blank=True, null=True)
+    valor_hora = models.IntegerField(verbose_name='Valor hora', blank=True, null=True)
+
+    def __str__(self):
+        return "Apoio da %s para a %s" % (str(self.mae_destino), str(self.mae_origem))
+
+
+class ApoioMaeFilhos(models.Model):
+    apoio_mae = models.ForeignKey(ApoioMae)
+    filho = models.ForeignKey(Filho)
+
+    def __str__(self):
+        return "%s Filho %s" % (str(self.apoio_mae), str(self.filho))
