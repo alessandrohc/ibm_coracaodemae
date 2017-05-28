@@ -1,4 +1,5 @@
 {% load static %}
+{% load bootstrapget %}
 {% include "mae/_head.html" %}
 <body>
 	<nav class="navbar custom-nav-bar navbar-toggleable-md navbar-inverse fixed-top custom-bg-primary">
@@ -40,26 +41,38 @@
     </nav>
 	<div class="container" id="page">
 		<div class="card-columns">
- 
- {% for mae in maes %}
- 	<a href="{% url 'detalhe' mae_id=mae.obj.pk %}">
-			<div class="card">
-				<div class="card card-inverse">
-				
-				<img class="card-img img-fluid" src="{{mae.obj.foto_mae_pq.url}}" alt="Card image">
 
-				<div class="card-img-overlay">
-				 <p class="card-text itens">{{mae.itens_comum|length}} itens em comum</p>
-		          <p class="card-text">{{mae.amigas_comum|length}} amigos</p>
-		          
-		          <h4 class=" custom-card-tile">{{mae.obj.nome}}</h4>
-		          <div class="rating" data-rate-value='{{mae.avaliacao}}'></div>
-		          
-        		</div>
-			</div>
-			</div>
-	</a>
-{% endfor %}
+       {% for mae in maes|hash:0 %}
+          {% include "mae/_mae.html" %}
+       {% endfor %}
+
+      {% for mae in maes|hash:4 %}
+          {% include "mae/_mae.html" %}
+       {% endfor %}
+
+        {% for mae in maes|hash:1 %}
+          {% include "mae/_mae.html" %}
+       {% endfor %}
+
+        {% for mae in maes|hash:5 %}
+          {% include "mae/_mae.html" %}
+       {% endfor %}
+
+      {% for mae in maes|hash:2 %}
+          {% include "mae/_mae.html" %}
+       {% endfor %}
+
+        {% for mae in maes|hash:6 %}
+          {% include "mae/_mae.html" %}
+       {% endfor %}
+  
+        {% for mae in maes|hash:3 %}
+          {% include "mae/_mae.html" %}
+       {% endfor %}
+
+        {% for mae in maes|hash:7 %}
+          {% include "mae/_mae.html" %}
+       {% endfor %}
 			
 		</div>
 
