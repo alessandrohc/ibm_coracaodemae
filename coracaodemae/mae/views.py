@@ -14,7 +14,7 @@ def extract_mae_id(**kwargs):
     return mae_id, mae_obj
 
 
-def contexto_para_mae(mae_obj):
+def contexto_para_mae(mae_obj, user=None):
     context = {}
     context['obj'] = mae_obj
     context['qtd_filho'] = mae_obj.filho_set.count()
@@ -25,6 +25,12 @@ def contexto_para_mae(mae_obj):
     # total = aggregates.get('total') or 0
     average = aggregates.get('average') or 0.0
     context['avaliacao'] = str(average).replace(",", ".")
+
+    if user:
+        mae_origem = user.mae
+        context['amigas_comum'] = mae_obj.get_amigas_em_comum(mae_origem)
+        context['itens_comum'] = mae_obj.get_itens_em_comum(mae_origem)
+
     return context
 
 
@@ -47,7 +53,7 @@ class Inicio(ListView):
         maes = sorted(Mae.objects.all(), key=lambda x: x.get_order_watson(m))
 
         for mae in maes:
-            context['maes'].append(contexto_para_mae(mae))
+            context['maes'].append(contexto_para_mae(mae, self.request.user))
 
         return context
 
