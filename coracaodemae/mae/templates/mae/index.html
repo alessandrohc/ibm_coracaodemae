@@ -7,56 +7,31 @@
         <!--<span><i class="fa fa-cogs" aria-hidden="true"></i></span>-->
         <span><i class="fa fa-search" aria-hidden="true"></i></span>
       </button>
-      <a class="navbar-brand" href="#">Mom's heart</a>
+      <a class="navbar-brand" href="#">Coração de mãe</a>
       <div class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
         <ul class="navbar-nav mr-auto hidden-xs-down">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Drop</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">link</a>
-              <a class="dropdown-item" href="#">link</a>
-              <a class="dropdown-item" href="#">link</a>
-            </div>
-          </li>
+          
         </ul>
         <form class="hidden-sm-up">
         	<div class="form-group">
-        		<label for="selectname" class="label">Example select</label>
-        		<select class="form-control" id="selectname">
-        			<option>Op&ccedil;&atilde;o A</option>
-        			<option>Op&ccedil;&atilde;o B</option>
-        		</select>
-        	</div>
-        	<div class="form-group">
     			<label for="date" class="label">Escolha a data</label>
-    			<input type="date" class="form-control" id="date" aria-describedby="dateHelp">
+    			<input type="date" class="form-control" value="2017-05-28" id="date" aria-describedby="dateHelp">
   			</div>
   			<div class="form-group">
     			<label for="starttime" class="label">Chegada</label>
-    			<input type="time" class="form-control" id="starttime" aria-describedby="timeHelp">
+    			<input type="time" class="form-control" id="starttime" value="13:00" aria-describedby="timeHelp">
     		</div>
     		<div class="form-group">
     			<label for="endtime" class="label">Sa&iacute;da</label>
-    			<input type="time" class="form-control" id="endtime" aria-describedby="time2Help">
+    			<input type="time" class="form-control" id="endtime" value="16:00" aria-describedby="time2Help">
   			</div>
         	<div class="form-check">
-	        		<label class="form-check-label">
-	        			<input type="checkbox" class="form-check-input">
-	        			label
-	        		</label>
-	        		<label class="form-check-label">
-	        			<input type="checkbox" class="form-check-input">
-	        			label
-	        		</label>
+	        		{% for filho in filhos %}
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" checked="checked">
+                  {{filho.nome}}
+                </label>
+              {% endfor %}
         	</div>
         	<button type="submit" class="btn btn-outline-success my-2 my-sm-0">Enviar</button>
         </form>

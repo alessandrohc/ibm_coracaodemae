@@ -50,6 +50,8 @@ class Inicio(ListView):
 
         m = Mae.objects.get(user=self.request.user)
 
+        context['filhos'] = m.filho_set.all()
+
         maes = sorted(Mae.objects.all(), key=lambda x: x.get_order_watson(m))
 
         for mae in maes:
