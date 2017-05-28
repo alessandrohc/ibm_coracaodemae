@@ -30,7 +30,7 @@ class ApoioMaeFilhosAdmin(admin.StackedInline):
 class MaeAdmin(admin.ModelAdmin):
     exclude = ('about_me', 'website_url', 'blog_url', 'date_of_birth', 'gender', 'raw_data', 'image')
     inlines = [FilhoInlineAdmin, ImagensInlineAdmin, FriendsInlineAdmin, PostsInlineAdmin]
-    list_display = ('nome', 'facebook_id')
+    list_display = ('nome', 'user', 'facebook_id')
 
 
 class ComentarioMaeAdmin(admin.ModelAdmin):
