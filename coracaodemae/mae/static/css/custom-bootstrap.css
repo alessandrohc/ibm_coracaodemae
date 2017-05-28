@@ -1,0 +1,27 @@
+.custom-bg-primary { background-color: #0087b4 !important } 
+.custom-primary-link {
+	color: #999;
+}
+.custom-active {
+	color: #0087b4/*#8A2BE2*/;
+}
+.custom-bg-gradient-black {
+z-index: :9999 !important;
+-moz-background: linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.14) 78%, rgba(0,0,0,0.01) 99%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+-webkit-background: linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.14) 78%,rgba(0,0,0,0.01) 99%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.14) 78%,rgba(0,0,0,0.01) 99%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+.custom-line {
+	border-top : 1px solid #ccc;
+}
+.custom-bg-white { background-color: #fff; }
+.custom-card-tile {color: #fefefe !important; font-size: 20px !important;
+	position: absolute;
+    bottom: 32px;
+}
+p.itens { font-size: 13px !important; color: rgba(255,255,255,0.80) !important}
+/*box-shadow: 10px 10px 5px grey;*/
+
+.card-img-overlay {
+	padding: 0.5rem !important;
+}
