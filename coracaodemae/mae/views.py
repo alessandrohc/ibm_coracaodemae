@@ -18,6 +18,7 @@ def contexto_para_mae(mae_obj, user=None):
     context = {}
     context['obj'] = mae_obj
     context['qtd_filho'] = mae_obj.filho_set.count()
+    context['imagenscasa'] = mae_obj.imagens_set.all()
     context['comentarios'] = ComentarioMae.objects.filter(mae_destino=mae_obj)
     aggregates = AvaliacaoMae.objects.filter(mae_destino=mae_obj).aggregate(
         total=Sum('avaliacao'), average=Avg('avaliacao'), count=Count('avaliacao'))
@@ -51,7 +52,7 @@ class Inicio(View, ContextMixin):
 
         m = Mae.objects.get(user=self.request.user)
 
-        maes = sorted(Mae.objects.all().exclude(pk=m.pk), key=lambda x: x.get_order_watson(m))
+        maes = sorted(Mae.objects.all().exclude(pk=m.pk), key=lambda x: x.get_order_watson(m), reverse=True)
 
         for mae in maes:
             context['maes'].append(contexto_para_mae(mae, self.request.user))
