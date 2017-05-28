@@ -16,15 +16,15 @@
         {% csrf_token %}
         	<div class="form-group">
     			<label for="date" class="label">Escolha a data</label>
-    			<input type="date" class="form-control" value="2017-05-28" id="date" aria-describedby="dateHelp">
+    			<input type="date" class="form-control" value="2017-05-28" name="date_apoio" id="date" aria-describedby="dateHelp">
   			</div>
   			<div class="form-group">
     			<label for="starttime" class="label">Chegada</label>
-    			<input type="time" class="form-control" id="starttime" value="13:00" aria-describedby="timeHelp">
+    			<input type="time" class="form-control" id="starttime" name="hora_inicio" value="13:00" aria-describedby="timeHelp">
     		</div>
     		<div class="form-group">
     			<label for="endtime" class="label">Sa&iacute;da</label>
-    			<input type="time" class="form-control" id="endtime" value="16:00" aria-describedby="time2Help">
+    			<input type="time" class="form-control" id="endtime" name="hora_fim" value="16:00" aria-describedby="time2Help">
   			</div>
         	<div class="form-check">
 	        		{% for filho in filhos %}

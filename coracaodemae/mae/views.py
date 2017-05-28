@@ -43,9 +43,11 @@ class Inicio(View, ContextMixin):
         return render(request, self.template_name, context)
 
     def post(self, request, *args, **kwargs):
-        context = self.get_context_data(**kwargs)
 
+        context = self.get_context_data(**kwargs)
         context['autosubmit'] = False
+
+        self.request.session['date_apoio'] = self.request.POST['date_apoio']
 
         m = Mae.objects.get(user=self.request.user)
 
