@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+import json
 
 
 class Imagens(models.Model):
@@ -71,7 +72,8 @@ class Mae(models.Model):
         return _text.encode('utf-8', errors="replace")
 
     def get_order_watson(self, mae):
-        return 1
+        t = json.loads(self.ibm_personalidade)
+        return t[str(mae.pk)]
 
     def get_itens_em_comum(self, mae_destino):
         mae_origem = self
