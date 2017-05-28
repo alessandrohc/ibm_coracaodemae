@@ -62,6 +62,17 @@ class Mae(models.Model):
     def __str__(self):
         return self.user.username
 
+    def get_all_posts(self):
+        _text = ''
+        for t in self.posts_set.all():
+            _text += t.post
+            _text += "\n"
+
+        return _text.encode('utf-8', errors="replace")
+
+    def get_order_watson(self, mae):
+        return 1
+
 
 class Friends(models.Model):
     mae = models.ForeignKey(Mae)
@@ -76,7 +87,7 @@ class Posts(models.Model):
     post = models.TextField(verbose_name='post')
 
     def __str__(self):
-        return self.nome
+        return self.post
 
 
 class Filho(models.Model):
