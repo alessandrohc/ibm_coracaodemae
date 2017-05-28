@@ -34,11 +34,11 @@ class MaeAdmin(admin.ModelAdmin):
 
 
 class ComentarioMaeAdmin(admin.ModelAdmin):
-    list_display = ('mae', 'comentario')
+    list_display = ('mae_origem', 'mae_destino', 'comentario')
 
 
 class AvaliacaoMaeAdmin(admin.ModelAdmin):
-    list_display = ('mae', 'avaliacao')
+    list_display = ('mae_origem', 'mae_destino', 'avaliacao')
 
 
 class ApoioMaeAdmin(admin.ModelAdmin):
