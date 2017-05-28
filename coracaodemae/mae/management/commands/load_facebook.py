@@ -19,6 +19,10 @@ class Command(BaseCommand):
 
             if "access_token" in user:
                 v = GraphAPI(user['access_token'])
+                
+                args = {'fields': 'message'}
+                posts = v.get(user['id']+"/posts")
+
                 args = {'fields': 'name'}
                 friends = v.get("me/friends", **args)
                 m = Mae.objects.filter(facebook_id=int(user['id']))
