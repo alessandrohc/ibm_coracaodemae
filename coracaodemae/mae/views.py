@@ -14,7 +14,7 @@ def extract_mae_id(**kwargs):
     return mae_id, mae_obj
 
 
-def contexto_para_mae(mae_obj):
+def contexto_para_mae(mae_obj, user=None):
     context = {}
     context['obj'] = mae_obj
     context['qtd_filho'] = mae_obj.filho_set.count()
@@ -25,6 +25,12 @@ def contexto_para_mae(mae_obj):
     # total = aggregates.get('total') or 0
     average = aggregates.get('average') or 0.0
     context['avaliacao'] = str(average).replace(",", ".")
+
+    if user:
+        mae_origem = user.mae
+        context['amigas_comum'] = mae_obj.get_amigas_em_comum(mae_origem)
+        context['itens_comum'] = mae_obj.get_itens_em_comum(mae_origem)
+
     return context
 
 
@@ -45,10 +51,10 @@ class Inicio(View, ContextMixin):
 
         m = Mae.objects.get(user=self.request.user)
 
-        maes = sorted(Mae.objects.all(), key=lambda x: x.get_order_watson(m))
+        maes = sorted(Mae.objects.all().exclude(pk=m.pk), key=lambda x: x.get_order_watson(m))
 
         for mae in maes:
-            context['maes'].append(contexto_para_mae(mae))
+            context['maes'].append(contexto_para_mae(mae, self.request.user))
 
         return render(request, self.template_name, context)
 
@@ -122,16 +128,48 @@ class Confirmacao(View, ContextMixin):
         return context
 
 
-def avaliacao(request, param):
-    context = {}
-    return render(request, 'mae/avaliacao.html', context)
+class LightboxAvaliacao(View, ContextMixin):
+
+    template_name = 'mae/lightbox_avaliacao.html'
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        return render(request, self.template_name, context)
+
+    def get_context_data(self, **kwargs):
+        context = super(LightboxAvaliacao, self).get_context_data(**kwargs)
+        mae_id, mae_obj = extract_mae_id(**kwargs)
+        context['user'] = self.request.user
+        context['mae'] = contexto_para_mae(mae_obj)
+
+        return context
 
 
-def login(request):
-    context = {}
-    return render(request, 'mae/login.html', context)
+class LightboxNotificacao(View, ContextMixin):
+
+    template_name = 'mae/lightbox_notificacao.html'
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        return render(request, self.template_name, context)
+
+    def get_context_data(self, **kwargs):
+        context = super(LightboxNotificacao, self).get_context_data(**kwargs)
+        context['user'] = self.request.user
+
+        return context
 
 
-def cadastro_mae(request):
-    context = {}
-    return render(request, 'mae/cadastro_mae.html', context)
+class Chat(View, ContextMixin):
+
+    template_name = 'mae/chat.html'
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        return render(request, self.template_name, context)
+
+    def get_context_data(self, **kwargs):
+        context = super(Chat, self).get_context_data(**kwargs)
+        context['user'] = self.request.user
+
+        return context
