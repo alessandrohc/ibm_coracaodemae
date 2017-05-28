@@ -11,7 +11,7 @@
 			</ol>
 			<div class="carousel-inner" role="listbox">
 				<div class="carousel-item active">
-					<img class="d-block img-fluid" src="{{mae.obj.foto_mae_gd.url}}" alt="First slide">
+					<img class="d-block img-fluid" src="{{mae.obj.foto_mae_gd.url}}">
 				</div>
 				{% for casa in mae.imagenscasa %}
 				<div class="carousel-item">
@@ -34,24 +34,30 @@
 	  			</li>
 	  			<li class="list-group-item"><strong>Hospedagem: </strong>&nbsp;R$ {{mae.obj.valor_hora}}</i></li>
 	  			<li class="list-group-item">
-	  				<strong>3 itens compativeis</strong><br>
-	  				
+	  				<strong>{{mae.itens_comum|length}} itens em comum</strong><br>
 	  			</li>
+	  			
+	  			{% if mae.amigas_comum %}
 	  			<li class="list-group-item">	
-	  			<strong>Amigos em comum: </strong>
+	  				<strong>Amigos em comum: </strong>
 	  			  	{% for amiga in mae.amigas_comum %}	
 		  				{{amiga}}
 		  			{% endfor %}  	
 	  			</li>
-	  			
-	  			<li class="list-group-item"><strong>Comentários</strong></li>
+	  			{% endif %}
 
-		   		{% for comentario in mae.comentarios %}
-		  			<li class="list-group-item">
-	       				{{ comentario.comentario }}
-		       			<small>{{ comentario.mae_origem.nome }} em {{ comentario.created_at}}</small>
-		  			</li>
-		        {% endfor %} 
+	  			{% if mae.amigas_comum %}
+
+		  			<li class="list-group-item"><strong>Comentários</strong></li>
+
+			   		{% for comentario in mae.comentarios %}
+			  			<li class="list-group-item">
+		       				{{ comentario.comentario }}
+			       			<small>{{ comentario.mae_origem.nome }} em {{ comentario.created_at}}</small>
+			  			</li>
+			        {% endfor %}
+
+			   	{% endif %}
 
 	  		</ul>
 	  		
