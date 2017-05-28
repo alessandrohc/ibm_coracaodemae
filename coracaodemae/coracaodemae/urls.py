@@ -18,6 +18,7 @@ urlpatterns = [
     # url(r'^cadastro_mae/$', views.cadastro_mae),
     url(r'^lightbox/avaliacao/(?P<mae_id>[0-9]+)/$',
         login_required(views.LightboxAvaliacao.as_view()), name='lightbox_avaliacao'),
-    url(r'^lightbox/notificacao/(?P<mae_id>[0-9]+)/$',
+    url(r'^lightbox/notificacao/$',
         login_required(views.LightboxNotificacao.as_view()), name='lightbox_notificacao'),
+    url(r'^chat/$', login_required(views.Chat.as_view()), name='chat'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

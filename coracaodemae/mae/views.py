@@ -135,8 +135,21 @@ class LightboxNotificacao(View, ContextMixin):
 
     def get_context_data(self, **kwargs):
         context = super(LightboxNotificacao, self).get_context_data(**kwargs)
-        mae_id, mae_obj = extract_mae_id(**kwargs)
         context['user'] = self.request.user
-        context['mae'] = contexto_para_mae(mae_obj)
+
+        return context
+
+
+class Chat(View, ContextMixin):
+
+    template_name = 'mae/chat.html'
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        return render(request, self.template_name, context)
+
+    def get_context_data(self, **kwargs):
+        context = super(Chat, self).get_context_data(**kwargs)
+        context['user'] = self.request.user
 
         return context
