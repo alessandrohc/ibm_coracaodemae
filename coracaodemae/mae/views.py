@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView, DeleteView, ListView, View, TemplateView, DetailView
 from django.views.generic.base import ContextMixin
-
 from mae.models import *
 from django.db.models import Avg, Count, Sum
 from django.core.urlresolvers import reverse
@@ -9,7 +8,6 @@ from django.core.urlresolvers import reverse
 
 def extract_mae_id(**kwargs):
     mae_id = kwargs.pop('mae_id', None)
-    print(mae_id)
     mae_obj = Mae.objects.get(pk=mae_id)
     return mae_id, mae_obj
 
@@ -31,6 +29,7 @@ def contexto_para_mae(mae_obj, user=None):
         mae_origem = user.mae
         context['amigas_comum'] = mae_obj.get_amigas_em_comum(mae_origem)
         context['itens_comum'] = mae_obj.get_itens_em_comum(mae_origem)
+        context['km'] = mae_obj.get_km_entre_maes(mae_origem)
 
     return context
 
