@@ -14,7 +14,7 @@ def extract_mae_id(**kwargs):
     return mae_id, mae_obj
 
 
-def contexto_para_mae(mae_obj):
+def contexto_para_mae(mae_obj, user=None):
     context = {}
     context['obj'] = mae_obj
     context['qtd_filho'] = mae_obj.filho_set.count()
@@ -25,29 +25,49 @@ def contexto_para_mae(mae_obj):
     # total = aggregates.get('total') or 0
     average = aggregates.get('average') or 0.0
     context['avaliacao'] = str(average).replace(",", ".")
+
+    if user:
+        mae_origem = user.mae
+        context['amigas_comum'] = mae_obj.get_amigas_em_comum(mae_origem)
+        context['itens_comum'] = mae_obj.get_itens_em_comum(mae_origem)
+
     return context
 
 
-class Inicio(ListView):
-    """
-    Url para Exibir os detalhes do Post
-    """
-    model = Mae
+class Inicio(View, ContextMixin):
 
     template_name = 'mae/index.html'
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        return render(request, self.template_name, context)
+
+    def post(self, request, *args, **kwargs):
+
+        context = self.get_context_data(**kwargs)
+        context['autosubmit'] = False
+
+        self.request.session['date_apoio'] = self.request.POST['date_apoio']
+
+        m = Mae.objects.get(user=self.request.user)
+
+        maes = sorted(Mae.objects.all().exclude(pk=m.pk), key=lambda x: x.get_order_watson(m))
+
+        for mae in maes:
+            context['maes'].append(contexto_para_mae(mae, self.request.user))
+
+        return render(request, self.template_name, context)
 
     def get_context_data(self, **kwargs):
         context = super(Inicio, self).get_context_data(**kwargs)
 
         context['user'] = self.request.user
         context['maes'] = []
+        context['autosubmit'] = True
 
         m = Mae.objects.get(user=self.request.user)
 
-        maes = sorted(Mae.objects.all(), key=lambda x: x.get_order_watson(m))
-
-        for mae in maes:
-            context['maes'].append(contexto_para_mae(mae))
+        context['filhos'] = m.filho_set.all()
 
         return context
 
@@ -64,7 +84,7 @@ class Detalhe(View, ContextMixin):
         context = super(Detalhe, self).get_context_data(**kwargs)
         mae_id, mae_obj = extract_mae_id(**kwargs)
         context['user'] = self.request.user
-        context['mae'] = contexto_para_mae(mae_obj)
+        context['mae'] = contexto_para_mae(mae_obj, self.request.user)
 
         return context
 
@@ -135,8 +155,21 @@ class LightboxNotificacao(View, ContextMixin):
 
     def get_context_data(self, **kwargs):
         context = super(LightboxNotificacao, self).get_context_data(**kwargs)
-        mae_id, mae_obj = extract_mae_id(**kwargs)
         context['user'] = self.request.user
-        context['mae'] = contexto_para_mae(mae_obj)
+
+        return context
+
+
+class Chat(View, ContextMixin):
+
+    template_name = 'mae/chat.html'
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        return render(request, self.template_name, context)
+
+    def get_context_data(self, **kwargs):
+        context = super(Chat, self).get_context_data(**kwargs)
+        context['user'] = self.request.user
 
         return context
