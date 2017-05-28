@@ -65,14 +65,14 @@ footer .nav-link {
 }
 
 /*index menu*/
-footer .nav-link i.fa-home { font-size: 40px; margin-top: -8px; margin-right:1.4em;}
-footer .nav-link i.fa-bell { font-size: 34px; margin-top: -4px; margin-right:1.4em;}
-footer .nav-link i.fa-comments { font-size: 40px; margin-top: -10px; }
+footer .nav-link i.fa-home { font-size: 40px; margin-top: -5px; margin-right:1.4em;}
+footer .nav-link i.fa-bell { font-size: 40px; margin-top: -4px; margin-right:1.4em;}
+footer .nav-link i.fa-comments {font-size: 40px; margin-top: -6px; }
 
 /*details*/
-footer .nav-link i.fa-heart { font-size: 40px; margin-top: -8px; margin-right:1.4em;}
-footer .nav-link i.fa-undo { font-size: 40px; margin-top: -8px; margin-right:1.4em;}
-footer .nav-link i.fa-comment { font-size: 40px; margin-top: -10px; }
+footer .nav-link i.fa-heart { font-size: 40px; margin-top: -4px; margin-right:1.4em;}
+footer .nav-link i.fa-undo { font-size: 40px; margin-left:10px; margin-top: -4px; margin-right:1.4em;}
+footer .nav-link i.fa-comment { font-size: 40px; margin-top: -6px; }
 
 /*icon notify*/
 footer .nav-item span {
@@ -88,6 +88,7 @@ footer .nav-item span {
     border-radius: 24px;
     position: absolute;
     top: 0px;
+    right:15px
 }
 
 footer .nav-item span.nbell { margin-left: 22px; }
@@ -135,7 +136,4 @@ footer .navbar {height: 65px}
 .rating span {
 	font-size: 1.5rem; 
 	color: #ffcb05
-}
-.rating span {
-	font-size: 40px !important;
 }
