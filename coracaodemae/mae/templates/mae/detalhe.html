@@ -30,7 +30,7 @@
 	  			<p class="card-text">{{mae.obj.descricao}}</p>
 	  		</div>
 	  		<ul class="list-group list-group-flush">
-	  			<li class="list-group-item"><a href="#"><i class="fa fa-map-marker" aria-hidden="true"> 3 km</i></a>
+	  			<li class="list-group-item"><a href="#"><i class="fa fa-map-marker" aria-hidden="true"> {{mae.km}} km</i></a>
 	  			</li>
 	  			<li class="list-group-item"><strong>Hospedagem: </strong>&nbsp;R$ {{mae.obj.valor_hora}}</i></li>
 	  			<li class="list-group-item">
@@ -39,14 +39,14 @@
 	  			
 	  			{% if mae.amigas_comum %}
 	  			<li class="list-group-item">	
-	  				<strong>Amigos em comum: </strong>
+	  				<strong>Amigos em comum:&nbsp;</strong>
 	  			  	{% for amiga in mae.amigas_comum %}	
 		  				{{amiga}}
-		  			{% endfor %}  	
+		  			{% endfor %}
 	  			</li>
 	  			{% endif %}
 
-	  			{% if mae.amigas_comum %}
+	  			{% if mae.comentarios %}
 
 		  			<li class="list-group-item"><strong>Comentários</strong></li>
 
