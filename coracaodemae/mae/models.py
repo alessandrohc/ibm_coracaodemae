@@ -117,20 +117,22 @@ class Filho(models.Model):
 
 class ComentarioMae(models.Model):
     created_at = models.DateTimeField("Criado em", auto_now=True)
-    mae = models.ForeignKey(Mae)
     comentario = models.TextField(verbose_name='Comentario')
+    mae_origem = models.ForeignKey(Mae, related_name="mae_origem_comentario")
+    mae_destino = models.ForeignKey(Mae, related_name="mae_destino_comentario")
 
     def __str__(self):
-        return "Comentario da %s" % str(self.mae)
+        return "Comentario para %s" % str(self.mae_destino)
 
 
 class AvaliacaoMae(models.Model):
     created_at = models.DateTimeField("Criado em", auto_now=True)
-    mae = models.ForeignKey(Mae)
+    mae_origem = models.ForeignKey(Mae, related_name="mae_origem_avaliacao")
+    mae_destino = models.ForeignKey(Mae, related_name="mae_destino_avaliacao")
     avaliacao = models.IntegerField(verbose_name='Avaliacao', blank=True, null=True)
 
     def __str__(self):
-        return "Avaliação da %s" % str(self.mae)
+        return "Avaliação para %s" % str(self.mae_destino)
 
 
 class ApoioMae(models.Model):
