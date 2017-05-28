@@ -25,8 +25,8 @@ class Command(BaseCommand):
                 if (m.count() > 0):
 
                     m = m[0]
-                    m.friends_set.all().delete()
+                    # m.friends_set.all().delete()
 
-                    for user_friend in friends['data']:
-                        m.friends_set.create(nome=user_friend['name'])
-                    m.save()
+                    # for user_friend in friends['data']:
+                    #     m.friends_set.create(nome=user_friend['name'])
+                    # m.save()
