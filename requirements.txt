@@ -4,6 +4,7 @@ bleach==2.0.0
 certifi==2017.4.17
 cffi==1.10.0
 chardet==3.0.3
+click==6.7
 cycler==0.10.0
 decorator==4.0.11
 Django==1.11.1
@@ -12,6 +13,8 @@ django-registration==2.2
 entrypoints==0.2.2
 facebook-sdk==2.0.0
 facepy==1.0.8
+geocoder==1.22.6
+geopy==1.11.0
 html5lib==0.999999999
 idna==2.5
 ipykernel==4.6.1
@@ -52,6 +55,7 @@ python-dateutil==2.6.0
 pytz==2017.2
 pyzmq==16.0.2
 qtconsole==4.3.0
+ratelim==0.1.6
 requests==2.16.3
 scipy==0.19.0
 simplegeneric==0.8.1
