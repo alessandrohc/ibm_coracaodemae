@@ -22,14 +22,31 @@ class FriendsInlineAdmin(admin.StackedInline):
     extra = 1
 
 
+class ApoioMaeFilhosAdmin(admin.StackedInline):
+    model = ApoioMaeFilhos
+    extra = 1
+
+
 class MaeAdmin(admin.ModelAdmin):
     exclude = ('about_me', 'website_url', 'blog_url', 'date_of_birth', 'gender', 'raw_data', 'image')
     inlines = [FilhoInlineAdmin, ImagensInlineAdmin, FriendsInlineAdmin, PostsInlineAdmin]
+    list_display = ('nome', 'facebook_id')
 
 
-class FilhoAdmin(admin.ModelAdmin):
-    pass
+class ComentarioMaeAdmin(admin.ModelAdmin):
+    list_display = ('mae_origem', 'mae_destino', 'comentario')
+
+
+class AvaliacaoMaeAdmin(admin.ModelAdmin):
+    list_display = ('mae_origem', 'mae_destino', 'avaliacao')
+
+
+class ApoioMaeAdmin(admin.ModelAdmin):
+    list_display = ('mae_origem', 'mae_destino', 'foi_processado')
+    inlines = [ApoioMaeFilhosAdmin]
 
 
 admin.site.register(Mae, MaeAdmin)
-admin.site.register(Filho, FilhoAdmin)
+admin.site.register(ComentarioMae, ComentarioMaeAdmin)
+admin.site.register(AvaliacaoMae, AvaliacaoMaeAdmin)
+admin.site.register(ApoioMae, ApoioMaeAdmin)

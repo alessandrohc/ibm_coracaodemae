@@ -19,14 +19,18 @@ class Command(BaseCommand):
 
             if "access_token" in user:
                 v = GraphAPI(user['access_token'])
+                
+                args = {'fields': 'message'}
+                posts = v.get(user['id']+"/posts")
+
                 args = {'fields': 'name'}
                 friends = v.get("me/friends", **args)
                 m = Mae.objects.filter(facebook_id=int(user['id']))
                 if (m.count() > 0):
 
                     m = m[0]
-                    m.friends_set.all().delete()
+                    # m.friends_set.all().delete()
 
-                    for user_friend in friends['data']:
-                        m.friends_set.create(nome=user_friend['name'])
-                    m.save()
+                    # for user_friend in friends['data']:
+                    #     m.friends_set.create(nome=user_friend['name'])
+                    # m.save()

@@ -64,80 +64,27 @@
     </nav>
 	<div class="container" id="page">
 		<div class="card-columns">
-			<div class="card card-inverse">
-				<img class="card-img img-fluid" src="{% static "/media/mae2.jpg" %}" alt="Card image">
-				<div class="card-img-overlay">
-		          <p class="card-text itens">3 itens compativeis</p>
-		          <p class="card-text">2 amigos</p>
-		          <h4 class=" custom-card-tile">Alexandra </h4>
-		          <div class="rating" data-rate-value=6></div>
-        		</div>
-			</div>
+ 
+ {% for mae in maes %}
+ 	<a href="/detalhe/{{ mae.obj.pk }}">
 			<div class="card">
 				<div class="card card-inverse">
-				<img class="card-img img-fluid" src="{% static "/media/mae0.jpg" %}" alt="Card image">
+				
+				<img class="card-img img-fluid" src="{{mae.obj.foto_mae_pq.url}}" alt="Card image">
+
 				<div class="card-img-overlay">
 				 <p class="card-text itens">3 itens compativeis</p>
 		          <p class="card-text">2 amigos</p>
-		          <h4 class=" custom-card-tile">Amanda </h4>
-		          <div class="rating" data-rate-value=6></div>
+		          
+		          <h4 class=" custom-card-tile">{{mae.obj.nome}}</h4>
+		          <div class="rating" data-rate-value='{{mae.avaliacao}}'></div>
+		          
         		</div>
 			</div>
 			</div>
-			<div class="card card-inverse">
-				<img class="card-img img-fluid" src="{% static "/media/mae0.jpg" %}" alt="Card image">
-				<div class="card-img-overlay">
-		          <p class="card-text itens">3 itens compativeis</p>
-		          <p class="card-text">2 amigos</p>
-		          <h4 class=" custom-card-tile">Katie </h4>
-		          <div class="rating" data-rate-value=6></div>
-        		</div>
-			</div>
-			<div class="card card-inverse">
-				<img class="card-img img-fluid" src="{% static "/media/mae0.jpg" %}" alt="Card image">
-				<div class="card-img-overlay">
-		          <p class="card-text itens">3 itens compativeis</p>
-		          <p class="card-text">2 amigos</p>
-		          <h4 class=" custom-card-tile">Dalva </h4>
-		          <div class="rating" data-rate-value=6></div>
-        		</div>
-			</div>
-			<div class="card card-inverse">
-				<img class="card-img img-fluid" src="{% static "/media/mae0.jpg" %}" alt="Card image">
-				<div class="card-img-overlay">
-		         <p class="card-text itens">3 itens compativeis</p>
-		          <p class="card-text">2 amigos</p>
-		          <h4 class=" custom-card-tile">Alexandra </h4>
-		          <div class="rating" data-rate-value=6></div>
-        		</div>
-			</div>
-			<div class="card card-inverse">
-				<img class="card-img img-fluid" src="{% static "/media/mae0.jpg" %}" alt="Card image">
-				<div class="card-img-overlay">
-		          <h4 class=" custom-card-tile">Anne </h4>
-		           <p class="card-text itens">3 itens compativeis</p>
-		          <p class="card-text">2 amigos</p>
-		          <h4 class=" custom-card-tile">Alexandra </h4>
-		          <div class="rating" data-rate-value=6></div>
-        		</div>
-			</div>
-			<div class="card card-inverse">
-				<img class="card-img img-fluid" src="{% static "/media/mae0.jpg" %}" alt="Card image">
-				<div class="card-img-overlay">
-		          <h4 class=" custom-card-tile">Lori </h4>
-		          <p class="card-text">33 anos</p>
-		          <div class="rating" data-rate-value=5></div>
-        		</div>
-			</div>
-			<div class="card card-inverse">
-				<img class="card-img img-fluid" src="{% static "/media/mae0.jpg" %}" alt="Card image">
-				<div class="card-img-overlay">
-		          <p class="card-text itens">3 itens compativeis</p>
-		          <p class="card-text">2 amigos</p>
-		          <h4 class=" custom-card-tile">Pattie </h4>
-		          <div class="rating" data-rate-value=6></div>
-        		</div>
-			</div>
+	</a>
+{% endfor %}
+
 			
 		</div>
 
