@@ -15,8 +15,6 @@ urlpatterns = [
     url(r'^confirmacao/(?P<mae_id>[0-9]+)/$', login_required(views.Confirmacao.as_view()), name='confirmacao'),
     url(r'^accounts/login/$', auth_views.login, {'template_name': 'mae/login.html'}, name="login"),
     url(r'^accounts/logout/$', auth_views.logout, {'next_page': '/'}, name="logout"),
-
     # url(r'^cadastro_mae/$', views.cadastro_mae),
-    # url(r'^lista/$', views.lista),
     url(r'^avaliacao/(?P<mae_id>[0-9]+)/$', views.avaliacao),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
