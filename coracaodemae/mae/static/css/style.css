@@ -122,18 +122,20 @@ footer .navbar {height: 65px}
 	-webkit-border-radius:10px !important
 }
 
-/*avaliacao*/
+
 .rating {
 	position: absolute !important;
 	bottom: 10px !important;
+	font-size: 20px;
 }
 .detail .rating {
 	position: relative !important;
 	bottom: initial !important;
 	right: initial !important;
+	font-size: 30px;
 }
-.detail .rate-base-layer span { color: #000 !important}
+.rate-base-layer span { color: #000 !important}
 .rating span {
-	font-size: 1.5rem; 
-	color: #ffcb05
+	color: #ffcb05;
+
 }
