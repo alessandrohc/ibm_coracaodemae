@@ -51,7 +51,7 @@ class Inicio(View, ContextMixin):
 
         m = Mae.objects.get(user=self.request.user)
 
-        maes = sorted(Mae.objects.all().exclude(pk=m.pk), key=lambda x: x.get_order_watson(m))
+        maes = sorted(Mae.objects.all().exclude(pk=m.pk), key=lambda x: x.get_order_watson(m), reverse=True)
 
         for mae in maes:
             context['maes'].append(contexto_para_mae(mae, self.request.user))
