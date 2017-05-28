@@ -40,37 +40,21 @@
 	  			<li class="list-group-item">	
 	  			<strong>Amigos em comum: </strong>
 	  			  	{% for amiga in mae.amigas_comum %}	
-	  			{{amiga}}		
-	  			{% endfor %}  	
-
-
-
+		  				{{amiga}}
+		  			{% endfor %}  	
 	  			</li>
-	  			<li class="list-group-item">	  				
-  					<strong>Outras informa&ccedil;&otilde;es</strong>
-  					Some quick example text to build on the cardexample text to build on the example text to build on the
-  					example text to build on the	  				
-	  			</li>
+	  			
 	  			<li class="list-group-item"><strong>Comentários</strong></li>
 
-	   		{% for comentario in comentarios %}
-	  			
-	  			<li class="list-group-item">
-       			{{ comentario.comentario }}
-       			NOME: {{ comentario.mae_origem.nome }}
-       			DATA: {{ comentario.created_at|date:"d/m/Y"}}
-	  			</li>
+		   		{% for comentario in mae.comentarios %}
+		  			<li class="list-group-item">
+	       				{{ comentario.comentario }}
+		       			<small>{{ comentario.mae_origem.nome }} em {{ comentario.created_at}}</small>
+		  			</li>
+		        {% endfor %} 
 
-	        {% endfor %}  			
-	  			<li class="list-group-item">
-	  				Uma verdadeira m&atilde;e, atenciosa e dedicada!
-	  				<small>Anne benevenuta em 22 de maio às 12:15</small>
-	  			</li>
 	  		</ul>
-	  		<div class="card-block">
-	  			<a href="#" class="card-link">Link</a>
-	  			<a href="#" class="card-link">Link</a>
-	  		</div>
+	  		
 	  	</div>
 	  </div>
 	<footer>
