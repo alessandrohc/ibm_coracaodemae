@@ -12,7 +12,8 @@
         <ul class="navbar-nav mr-auto hidden-xs-down">
           
         </ul>
-        <form class="hidden-sm-up">
+        <form class="hidden-sm-up" id="coracaomae_form" method="POST">
+        {% csrf_token %}
         	<div class="form-group">
     			<label for="date" class="label">Escolha a data</label>
     			<input type="date" class="form-control" value="2017-05-28" id="date" aria-describedby="dateHelp">
@@ -63,6 +64,14 @@
 		</div>
 
 	</div>
+  {% if autosubmit %}
+    <script>
+      $(document).ready(function(){
+        $("#coracaomae_form").submit();
+      });    
+      </script>
+  {% endif %}
+
 	{% include "mae/_footer.html" %}
 </body>
 </html>

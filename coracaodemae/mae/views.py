@@ -34,28 +34,38 @@ def contexto_para_mae(mae_obj, user=None):
     return context
 
 
-class Inicio(ListView):
-    """
-    Url para Exibir os detalhes do Post
-    """
-    model = Mae
+class Inicio(View, ContextMixin):
 
     template_name = 'mae/index.html'
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        return render(request, self.template_name, context)
+
+    def post(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+
+        context['autosubmit'] = False
+
+        m = Mae.objects.get(user=self.request.user)
+
+        maes = sorted(Mae.objects.all(), key=lambda x: x.get_order_watson(m))
+
+        for mae in maes:
+            context['maes'].append(contexto_para_mae(mae, self.request.user))
+
+        return render(request, self.template_name, context)
 
     def get_context_data(self, **kwargs):
         context = super(Inicio, self).get_context_data(**kwargs)
 
         context['user'] = self.request.user
         context['maes'] = []
+        context['autosubmit'] = True
 
         m = Mae.objects.get(user=self.request.user)
 
         context['filhos'] = m.filho_set.all()
-
-        maes = sorted(Mae.objects.all(), key=lambda x: x.get_order_watson(m))
-
-        for mae in maes:
-            context['maes'].append(contexto_para_mae(mae, self.request.user))
 
         return context
 
