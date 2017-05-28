@@ -16,5 +16,8 @@ urlpatterns = [
     url(r'^accounts/login/$', auth_views.login, {'template_name': 'mae/login.html'}, name="login"),
     url(r'^accounts/logout/$', auth_views.logout, {'next_page': '/'}, name="logout"),
     # url(r'^cadastro_mae/$', views.cadastro_mae),
-    url(r'^avaliacao/(?P<mae_id>[0-9]+)/$', views.avaliacao),
+    url(r'^lightbox/avaliacao/(?P<mae_id>[0-9]+)/$',
+        login_required(views.LightboxAvaliacao.as_view()), name='lightbox_avaliacao'),
+    url(r'^lightbox/notificacao/(?P<mae_id>[0-9]+)/$',
+        login_required(views.LightboxNotificacao.as_view()), name='lightbox_notificacao'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

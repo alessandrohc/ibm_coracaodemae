@@ -108,16 +108,35 @@ class Confirmacao(View, ContextMixin):
         return context
 
 
-def avaliacao(request, param):
-    context = {}
-    return render(request, 'mae/avaliacao.html', context)
+class LightboxAvaliacao(View, ContextMixin):
+
+    template_name = 'mae/lightbox_avaliacao.html'
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        return render(request, self.template_name, context)
+
+    def get_context_data(self, **kwargs):
+        context = super(LightboxAvaliacao, self).get_context_data(**kwargs)
+        mae_id, mae_obj = extract_mae_id(**kwargs)
+        context['user'] = self.request.user
+        context['mae'] = contexto_para_mae(mae_obj)
+
+        return context
 
 
-def login(request):
-    context = {}
-    return render(request, 'mae/login.html', context)
+class LightboxNotificacao(View, ContextMixin):
 
+    template_name = 'mae/lightbox_notificacao.html'
 
-def cadastro_mae(request):
-    context = {}
-    return render(request, 'mae/cadastro_mae.html', context)
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        return render(request, self.template_name, context)
+
+    def get_context_data(self, **kwargs):
+        context = super(LightboxNotificacao, self).get_context_data(**kwargs)
+        mae_id, mae_obj = extract_mae_id(**kwargs)
+        context['user'] = self.request.user
+        context['mae'] = contexto_para_mae(mae_obj)
+
+        return context
