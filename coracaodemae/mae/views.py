@@ -29,7 +29,6 @@ def contexto_para_mae(mae_obj, user=None):
         mae_origem = user.mae
         context['amigas_comum'] = mae_obj.get_amigas_em_comum(mae_origem)
         context['itens_comum'] = mae_obj.get_itens_em_comum(mae_origem)
-        context['km'] = mae_obj.get_km_entre_maes(mae_origem)
 
     return context
 
@@ -85,6 +84,7 @@ class Detalhe(View, ContextMixin):
         mae_id, mae_obj = extract_mae_id(**kwargs)
         context['user'] = self.request.user
         context['mae'] = contexto_para_mae(mae_obj, self.request.user)
+        context['km'] = mae_obj.get_km_entre_maes(self.request.user.mae)
 
         return context
 
