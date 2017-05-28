@@ -41,7 +41,12 @@ class Inicio(ListView):
 
         context['user'] = self.request.user
         context['maes'] = []
-        for mae in Mae.objects.all():
+
+        m = Mae.objects.get(user=self.request.user)
+
+        maes = sorted(Mae.objects.all(), key=lambda x: x.get_order_watson(m))
+
+        for mae in maes:
             context['maes'].append(contexto_para_mae(mae))
 
         return context
