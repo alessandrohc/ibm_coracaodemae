@@ -18,6 +18,7 @@ def contexto_para_mae(mae_obj, user=None):
     context = {}
     context['obj'] = mae_obj
     context['qtd_filho'] = mae_obj.filho_set.count()
+    context['imagenscasa'] = mae_obj.imagens_set.all()
     context['comentarios'] = ComentarioMae.objects.filter(mae_destino=mae_obj)
     aggregates = AvaliacaoMae.objects.filter(mae_destino=mae_obj).aggregate(
         total=Sum('avaliacao'), average=Avg('avaliacao'), count=Count('avaliacao'))
