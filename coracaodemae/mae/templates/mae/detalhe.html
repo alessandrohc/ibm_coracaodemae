@@ -38,8 +38,14 @@
 	  				<strong>3 itens compativeis</strong><br>
 	  				
 	  			</li>
-	  			<li class="list-group-item">	  				
-	  				<a href="#">Dalva hecht, Maria Carvalho e mais 5 amigos em comum</a>
+	  			<li class="list-group-item">	
+	  			<strong>Amigos em comum: </strong>
+	  			  	{% for amiga in mae.amigas_comum %}	
+	  			{{amiga}}		
+	  			{% endfor %}  	
+
+
+
 	  			</li>
 	  			<li class="list-group-item">	  				
   					<strong>Outras informa&ccedil;&otilde;es</strong>

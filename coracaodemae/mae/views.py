@@ -84,7 +84,7 @@ class Detalhe(View, ContextMixin):
         context = super(Detalhe, self).get_context_data(**kwargs)
         mae_id, mae_obj = extract_mae_id(**kwargs)
         context['user'] = self.request.user
-        context['mae'] = contexto_para_mae(mae_obj)
+        context['mae'] = contexto_para_mae(mae_obj, self.request.user)
 
         return context
 

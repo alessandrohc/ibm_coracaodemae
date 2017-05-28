@@ -1,1 +1,28 @@
-lightbox avaliacao
+{% load static %}
+{% include "mae/_head.html" %}
+<body>
+	<div class="container detail" id="avaliacao">
+	  <div class="card-group">
+	  	<div class="card text-center">
+
+	  		<img src="{% static "/media/mae1.jpg" %}" class="rounded-circle" alt="Sample image" style="width: 100px; height: 100px; margin: auto; padding:10px;">
+	  		<div id="avaliacao" class="card-block" style="padding-top:0px; padding-bottom: 0px;">
+	  			<h5 class="card-title">Yasmim Lamartine</h5>
+	  			<h6 class="card-subtitle mb-2 text-muted">Avalie o coração dessa mãe</h6>
+	  			<div class="rating" data-rate-value='0'></div>
+	  		</div>
+	  		<div class="card-block" style="padding-top: 0px;">
+	  			<hr>
+	  			<p class="text-center">Deixe seu comentário</p>
+	  			<form>
+			  		<div class="form-group">
+						<textarea class="form-control" id="cmt" name="comment" rows="3"></textarea>
+					</div>
+					 <button type="submit" class="subscribe btn btn-primary btn-block">Enviar</button>
+					 
+				</form>
+	  		</div>
+	  	</div>
+	  </div>
+</body>
+</html>

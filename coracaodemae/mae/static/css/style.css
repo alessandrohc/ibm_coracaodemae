@@ -136,3 +136,6 @@ footer .navbar {height: 65px}
 	font-size: 1.5rem; 
 	color: #ffcb05
 }
+.rating span {
+	font-size: 40px !important;
+}
