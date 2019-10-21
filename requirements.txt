@@ -7,7 +7,7 @@ chardet==3.0.3
 click==6.7
 cycler==0.10.0
 decorator==4.0.11
-Django==1.11.1
+Django==1.11.23
 django-facebook==6.0.6
 django-registration==2.2
 entrypoints==0.2.2
