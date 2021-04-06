@@ -9,7 +9,7 @@ cycler==0.10.0
 decorator==4.0.11
 Django==1.11.1
 django-facebook==6.0.6
-django-registration==2.2
+django-registration==3.1.2
 entrypoints==0.2.2
 facebook-sdk==2.0.0
 facepy==1.0.8
